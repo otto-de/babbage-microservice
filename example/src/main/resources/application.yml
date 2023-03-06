@@ -1,0 +1,13 @@
+info:
+  app:
+    name: babbage-example
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: loggers, info, health
+    loggers:
+      enabled: true
+

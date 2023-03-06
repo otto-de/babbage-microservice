@@ -14,7 +14,8 @@ import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider
 class AwsCredentialsConfiguration {
 
     @Bean
-    fun defaultAwsCredentialsProvider(@Value("\${babbage.aws.auth.profile:default}") profile: String): AwsCredentialsProvider {
+    fun defaultAwsCredentialsProvider(@Value("\${babbage.aws.auth.profile:default}") profile: String)
+            : AwsCredentialsProvider {
         return AwsCredentialsProviderChain
             .builder()
             .credentialsProviders(
