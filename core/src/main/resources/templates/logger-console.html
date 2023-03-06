@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head  :: head}"></div>
+<body>
+<div th:replace="~{fragments/navigation  :: navigation}"></div>
+<div class="container" th:data-management-base-path="${webEndpointBasePath}">
+    <h1>Loggers Console</h1>
+
+    <div class="row logger-row">
+        <div class="input-group w-50">
+              <span class="input-group-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+  <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"></path>
+</svg>
+              </span>
+            <input type="text" class="form-control" value=""
+                   oninput="window.logger.filterChanged(this)"
+                   onload="window.logger.filterChanged(this)"
+                   onchange="window.logger.filterChanged(this)"
+                   placeholder="Logger Example" aria-label="Logger Example" aria-describedby="basic-addon1">
+        </div>
+    </div>
+    <div class="row logger-row logger-row-header">
+        <div class="col-6">Logger</div>
+        <div class="col-6">State</div>
+    </div>
+
+    <div th:each="logger : ${loggers.loggers}" th:attr="data-name=${logger.key}" class="row logger-row">
+        <div class="col-6">
+            <b th:text="${logger.key}"></b>
+        </div>
+        <div class="col-6">
+            <button th:each="level : ${loggers.levels}" type="button"
+                    class="btn" th:attr="data-name=${logger.key}"
+                    th:classappend="${level.name == logger.value.configuredLevel}?'btn-primary':'btn-light'"
+                    th:text="${level.name}"
+                    onclick="window.logger.loggerChanged(this)">
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<script th:src="${basePath} + '/loggers/main.js'"></script>
+
+</body>
+</html>
+

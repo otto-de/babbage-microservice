@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<body>
+    <ul class="nav navbar-nav navbar-right" th:fragment="right">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Endpoints
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a th:href="@{|${webEndpointBasePath}/health|}">health</a></li>
+                <li><a th:href="@{|${webEndpointBasePath}/info|}">info</a></li>
+                <li><a th:href="@{|${webEndpointBasePath}/logger|}">Logger</a></li>
+                <li><a th:href="@{|${webEndpointBasePath}/toggles|}">Togglz</a></li>
+                <li><a th:href="@{|${webEndpointBasePath}/metrics|}">metrics</a></li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<body>
+    <ul class="nav navbar-nav"  th:fragment="main">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{|${webEndpointBasePath}/status|}">Status</a>
+        </li>
+    </ul>
+</body>
+</html>

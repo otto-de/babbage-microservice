@@ -1,0 +1,13 @@
+#https://github.com/arturbosch/detekt/blob/master/detekt-cli/src/main/resources/default-detekt-config.yml
+build:
+  maxIssues: 0
+
+style:
+  ForbiddenComment:
+    values:
+      - 'FIXME:'
+      - 'STOPSHIP:'
+
+potential-bugs:
+  ImplicitDefaultLocale:
+    active: false # TODO: there is a bug which lead to an error during analysis of de.otto.babbage.core.status.contributors.SystemInfoContributor.kt
