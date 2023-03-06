@@ -1,8 +1,12 @@
 window.logger = function () {
 
     const _getBaseUrl = () => {
-        let firstPathPart = window.location.pathname.split('/')[1];
-        return window.location.protocol + "//" + window.location.host + "/" + firstPathPart;
+        let container = document.querySelector(".container[data-base-path]");
+        if (container) {
+            return container.getAttribute("data-base-path");
+        } else {
+            return "";
+        }
     };
 
     const _getManagementBasePath = () => {
@@ -38,11 +42,11 @@ window.logger = function () {
         const text = input.value;
         document.querySelectorAll('.logger-row')
             .forEach(entry => {
-            if ("name" in entry.dataset) {
-                let found = text.trim() === '' || entry.dataset['name'].toLowerCase().indexOf(text.toLowerCase()) !== -1;
-                entry.style.display = found ? 'flex' : 'none';
-            }
-        });
+                if ("name" in entry.dataset) {
+                    let found = text.trim() === '' || entry.dataset['name'].toLowerCase().indexOf(text.toLowerCase()) !== -1;
+                    entry.style.display = found ? 'flex' : 'none';
+                }
+            });
     }
 
     return {

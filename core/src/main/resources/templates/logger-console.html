@@ -3,7 +3,8 @@
 <div th:replace="~{fragments/head  :: head}"></div>
 <body>
 <div th:replace="~{fragments/navigation  :: navigation}"></div>
-<div class="container" th:data-management-base-path="${webEndpointBasePath}">
+<div class="container" th:data-management-base-path="${managementBasePath}" th:data-base-path="${basePath}">
+    <script th:src="${basePath} + '/loggers/main.js'"></script>
     <h1>Loggers Console</h1>
 
     <div class="row logger-row">
@@ -40,8 +41,6 @@
     </div>
 
 </div>
-
-<script th:src="${basePath} + '/loggers/main.js'"></script>
 
 </body>
 </html>

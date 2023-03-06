@@ -1,6 +1,7 @@
 package de.otto.babbage.core.status
 
 import de.otto.babbage.core.status.config.StatusProperties
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.actuate.info.InfoEndpoint
 import org.springframework.boot.info.GitProperties
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody
 @Controller
 class StatusController(
     private val infoEndpoint: InfoEndpoint,
+    @Autowired(required = false)
     private val gitProperties: GitProperties?,
     private val statusProperties: StatusProperties,
     @Value("\${info.app.name}")private val applicationName: String
