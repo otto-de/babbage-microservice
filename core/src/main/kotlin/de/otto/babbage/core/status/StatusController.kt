@@ -17,7 +17,7 @@ class StatusController(
     @Autowired(required = false)
     private val gitProperties: GitProperties?,
     private val statusProperties: StatusProperties,
-    @Value("\${info.app.name}")private val applicationName: String
+    @Value("\${info.app.name}") private val applicationName: String
 ) {
 
     @GetMapping("\${management.endpoints.web.base-path}/status")

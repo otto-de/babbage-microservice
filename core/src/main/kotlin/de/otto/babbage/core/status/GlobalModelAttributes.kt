@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.ModelAttribute
 @ControllerAdvice
 class GlobalModelAttributes(
     private val webEndpointProperties: WebEndpointProperties,
-    @Value("\${info.app.name}") private val applicationName: String
+    @Value("\${info.app.name}") private val applicationName: String,
+    @Value("\${spring.webflux.base-path:}") val basePath: String,
 ) {
 
     @ModelAttribute
     fun addAttributes(model: Model) {
-        model.addAttribute("webEndpointBasePath", webEndpointProperties.basePath)
+        model.addAttribute("managementBasePath", webEndpointProperties.basePath)
+        model.addAttribute("basePath", basePath)
         model.addAttribute("applicationName", applicationName)
     }
 
