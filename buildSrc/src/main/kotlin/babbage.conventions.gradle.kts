@@ -92,24 +92,25 @@ tasks.register<Jar>("sourcesJar") {
 }
 
 publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/otto-de/babbage-microservice")
-            credentials {
-                username = (findProperty("github_username") as String?) ?: System.getenv("GITHUB_USERNAME")
-                password = (findProperty("github_token") as String?) ?: System.getenv("GITHUB_TOKEN")
+    if (!base.archivesName.get().contains("example")) {
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/otto-de/babbage-microservice")
+                credentials {
+                    username = (findProperty("github_username") as String?) ?: System.getenv("GITHUB_USERNAME")
+                    password = (findProperty("github_token") as String?) ?: System.getenv("GITHUB_TOKEN")
+                }
+            }
+        }
+
+        publications {
+            create<MavenPublication>(base.archivesName.get()) {
+                from(components["java"])
+                artifact(tasks["sourcesJar"])
             }
         }
     }
-
-    publications {
-        create<MavenPublication>(base.archivesName.get()) {
-            from(components["java"])
-            artifact(tasks["sourcesJar"])
-        }
-    }
-
 }
 
 /**
