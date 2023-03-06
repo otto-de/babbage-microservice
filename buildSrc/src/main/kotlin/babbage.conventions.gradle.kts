@@ -93,7 +93,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/***REMOVED***/***REMOVED***")
+            url = uri("https://maven.pkg.github.com/otto-de/babbage-microservice")
             credentials {
                 username = (findProperty("github_username") as String?) ?: System.getenv("GITHUB_USERNAME")
                 password = (findProperty("github_token") as String?) ?: System.getenv("GITHUB_TOKEN")
