@@ -7,11 +7,11 @@ The babbage microservice library provides basic implementation based on a reacti
 It's the little brother from [edison-microservice](https://github.com/otto-de/edison-microservice), which is the original non reactive implementation.
 
 ## Modules
-| Module         | Description                                 |
-|----------------|---------------------------------------------|
-| core           | Status & Loggers Page                       |
-| aws-auth       | AWS Credentials Provider Chain              |
-| aws-paramstore | Property resolver from AWS Parameter Store  |
+| Module                                     | Description                                           |
+|--------------------------------------------|-------------------------------------------------------|
+| [core](core/README.md)                     | Basic management page (Status, Loggers, Metrics etc.) |
+| [aws-auth](aws-auth/README.md)             | AWS Credentials Provider Chain                        |
+| [aws-paramstore](aws-paramstore/README.md) | Property resolver from AWS Parameter Store            |
 
 
 ## How to release
