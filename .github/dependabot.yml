@@ -1,0 +1,17 @@
+version: 2
+
+updates:
+  - package-ecosystem: gradle
+    directory: "/buildSrc/"
+    schedule:
+      interval: weekly
+      time: "06:00"
+      timezone: Europe/Berlin
+    open-pull-requests-limit: 50
+  - package-ecosystem: gradle
+    directory: "/buildSrc/src/main/kotlin"
+    schedule:
+      interval: weekly
+      time: "06:00"
+      timezone: Europe/Berlin
+    open-pull-requests-limit: 50
