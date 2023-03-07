@@ -22,17 +22,19 @@ class GlobalModelAttributesTest {
         // given
         val globalModelAttributes = GlobalModelAttributes(
             webEndpointProperties = webEndpointProperties,
-            applicationName = "someApplicationName"
+            applicationName = "someApplicationName",
+            basePath = "someBasePath"
         )
-        every { webEndpointProperties.basePath } answers { "someBasePath" }
+        every { webEndpointProperties.basePath } answers { "someManagementBasePath" }
         val model = ConcurrentModel()
 
         // when
         globalModelAttributes.addAttributes(model)
 
         // then
-        model.getAttribute("webEndpointBasePath") shouldBe "someBasePath"
+        model.size shouldBe 3
+        model.getAttribute("managementBasePath") shouldBe "someManagementBasePath"
+        model.getAttribute("basePath") shouldBe "someBasePath"
         model.getAttribute("applicationName") shouldBe "someApplicationName"
-        model.size shouldBe 2
     }
 }
