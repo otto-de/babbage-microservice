@@ -1,4 +1,6 @@
 # Babbage Microservice
+[![Build](https://github.com/otto-de/babbage-microservice/actions/workflows/build.yml/badge.svg)](https://github.com/otto-de/babbage-microservice/actions/workflows/build.yml)
+
 [Babbage](https://de.wikipedia.org/wiki/Charles_Babbage) originated the concept of a digital programmable computer.
 
 ## About
