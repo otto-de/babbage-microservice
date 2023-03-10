@@ -2,6 +2,7 @@ info:
   app:
     name: babbage-example
 
+
 management:
   endpoints:
     web:
@@ -10,4 +11,6 @@ management:
         include: loggers, info, health
     loggers:
       enabled: true
-
+spring:
+  webflux:
+    base-path: /foo

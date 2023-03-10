@@ -3,8 +3,7 @@ package de.otto.babbage.core.status
 import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import de.otto.babbage.core.status.GlobalModelAttributes
-import io.mockk.MockKException
+import de.otto.babbage.core.management.GlobalModelAttributes
 import io.mockk.junit5.MockKExtension
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -23,7 +22,8 @@ class GlobalModelAttributesTest {
         val globalModelAttributes = GlobalModelAttributes(
             webEndpointProperties = webEndpointProperties,
             applicationName = "someApplicationName",
-            basePath = "someBasePath"
+            basePath = "someBasePath",
+            navbarItems = listOf()
         )
         every { webEndpointProperties.basePath } answers { "someManagementBasePath" }
         val model = ConcurrentModel()

@@ -1,5 +1,6 @@
 package de.otto.babbage.core.status
 
+import de.otto.babbage.core.management.ManagementController
 import de.otto.babbage.core.status.config.StatusProperties
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
@@ -18,7 +19,7 @@ class StatusController(
     private val gitProperties: GitProperties?,
     private val statusProperties: StatusProperties,
     @Value("\${info.app.name}") private val applicationName: String
-) {
+) : ManagementController {
 
     @GetMapping("\${management.endpoints.web.base-path}/status")
     @Suppress("FunctionOnlyReturningConstant", "UnusedPrivateMember")
