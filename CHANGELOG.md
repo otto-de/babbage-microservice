@@ -3,6 +3,7 @@
 ## 0.0.3-SNAPSHOT
 * _core_: 
   * Fix: Logger overview now uses the correct links for changing log levels.
+  * Fix: Long loggers are now scrollable and are not hidden behind the log-level buttons.
   * Feature: Add option to add custom management pages by extending your Controller with `ManagementController`. Documentation about is added [here](core/README.md)
 
 ## 0.0.2
