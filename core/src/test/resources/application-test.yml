@@ -1,0 +1,12 @@
+info:
+  app:
+    name: test-application
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: loggers, info, health
+    loggers:
+      enabled: true

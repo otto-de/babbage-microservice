@@ -43,7 +43,7 @@ window.logger = function () {
         document.querySelectorAll('.logger-row')
             .forEach(entry => {
                 if ("name" in entry.dataset) {
-                    let found = text.trim() === '' || entry.dataset['name'].toLowerCase().indexOf(text.toLowerCase()) !== -1;
+                    let found = text.trim() === '' || entry.dataset['logger-name'].toLowerCase().indexOf(text.toLowerCase()) !== -1;
                     entry.style.display = found ? 'flex' : 'none';
                 }
             });
