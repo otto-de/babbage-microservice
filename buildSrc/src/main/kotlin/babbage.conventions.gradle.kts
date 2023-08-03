@@ -48,6 +48,7 @@ dependencies {
         api("software.amazon.awssdk:auth:2.20.7")
         api("software.amazon.awssdk:s3:2.20.7")
         api("software.amazon.awssdk:ssm:2.20.7")
+        api("jakarta.validation:jakarta.validation-api:3.0.2")
 
         // test dependencies
         api("com.ninja-squad:springmockk:4.0.0")

@@ -7,6 +7,8 @@ style:
     values:
       - 'FIXME:'
       - 'STOPSHIP:'
+  WildcardImport:
+    active: false
 
 potential-bugs:
   ImplicitDefaultLocale:
