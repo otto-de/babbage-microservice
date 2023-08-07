@@ -2,6 +2,9 @@
 
 ## 0.1.0-SNAPSHOT
 
+* _validation_:
+  * Feature: Expose validation message in http response body
+
 ## 0.0.3
 * _core_: 
   * Fix: Logger overview now uses the correct links for changing log levels.
