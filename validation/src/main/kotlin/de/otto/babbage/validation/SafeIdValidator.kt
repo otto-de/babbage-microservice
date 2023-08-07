@@ -3,8 +3,8 @@ package de.otto.babbage.validation
 import jakarta.validation.ConstraintValidator
 import jakarta.validation.ConstraintValidatorContext
 
-class SafeIdValidator : ConstraintValidator<SafeId?, String?> {
-    override fun initialize(safeId: SafeId?) {
+class SafeIdValidator : ConstraintValidator<SafeId, String?> {
+    override fun initialize(safeId: SafeId) {
         // do nothing
     }
 

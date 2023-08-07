@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    implementation("jakarta.validation:jakarta.validation-api")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 }
 
 base.archivesName.set("validation")

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 class ValidationExceptionControllerAdvice {
 
     @ExceptionHandler(ConstraintViolationException::class)
-    fun handleExceptionForInvalidParameter(): ResponseEntity<*> {
-        return ResponseEntity.badRequest().build<Any>()
+    fun handleExceptionForInvalidParameter(e: ConstraintViolationException): ResponseEntity<*> {
+        return ResponseEntity.badRequest().body(e.message)
     }
 
 }
