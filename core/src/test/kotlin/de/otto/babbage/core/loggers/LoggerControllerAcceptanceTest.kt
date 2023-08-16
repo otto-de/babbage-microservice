@@ -36,4 +36,15 @@ class LoggerControllerAcceptanceTest : BaseAcceptanceTest() {
         val loggerButtons = loggerRows[0].getElementsByTag("button")
         loggerButtons.map { it.text() } shouldBe listOf("OFF", "ERROR", "WARN", "INFO", "DEBUG", "TRACE")
     }
+
+    @Test
+    fun `should load bootstrap js`() {
+        //when
+        val document = Jsoup.connect("http://localhost:$port/actuator/logger").get()
+
+        //then
+        document.select("script[src*='bootstrap.bundle.min.js']").size shouldBe 1
+
+
+    }
 }
