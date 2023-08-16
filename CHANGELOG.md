@@ -1,7 +1,8 @@
 # Changelog
 
-## 0.1.0-SNAPSHOT
-
+## 0.1.0
+* _core_:
+  * Fix: Load bootstrap js in footer of logger console
 * _validation_:
   * Feature: Expose validation message in http response body
 
