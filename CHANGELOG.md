@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.0
+* Upgrade all modules to spring boot 3.2.2
+
 ## 0.1.0
 * _core_:
   * Fix: Load bootstrap js in footer of logger console
