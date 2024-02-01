@@ -4,7 +4,7 @@ build:
 
 style:
   ForbiddenComment:
-    values:
+    comments:
       - 'FIXME:'
       - 'STOPSHIP:'
   WildcardImport:
