@@ -5,6 +5,7 @@ import org.springframework.boot.actuate.info.Info
 import org.springframework.boot.actuate.info.InfoContributor
 import org.springframework.stereotype.Component
 import java.time.Duration
+import java.time.OffsetDateTime
 import java.time.OffsetDateTime.now
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -27,17 +28,21 @@ class SystemInfoContributor(
     override fun contribute(builder: Info.Builder) {
         builder.withDetail(
             "system",
-            mapOf(
-                "startTime" to START_TIME.format(DateTimeFormatter.ISO_DATE_TIME),
-                "upTime" to getSystemUpTime(),
-                "systemTime" to now().format(DateTimeFormatter.ISO_DATE_TIME),
-                "port" to port,
-                "hostname" to hostname
-            )
+            getSystemInfo().asMap()
         )
     }
 
-    fun getSystemUpTime(): String {
+    fun getSystemInfo(): SystemInfo {
+        return SystemInfo(
+            startTime = START_TIME,
+            upTime = getSystemUpTime(),
+            systemTime = now(),
+            port = port,
+            hostname = hostname
+        )
+    }
+
+    private fun getSystemUpTime(): String {
         val seconds = Duration.between(START_TIME, now()).seconds
         return String.format(
             Locale.getDefault(),
@@ -47,4 +52,24 @@ class SystemInfoContributor(
             seconds % ONE_MINUTE_SECONDS
         )
     }
+}
+
+data class SystemInfo(
+    val startTime: OffsetDateTime,
+    val upTime: String,
+    val systemTime: OffsetDateTime,
+    val port: Int,
+    val hostname: String
+) {
+
+    fun asMap(): Map<String, String> {
+        return mapOf(
+            "startTime" to startTime.format(DateTimeFormatter.ISO_DATE_TIME),
+            "upTime" to upTime,
+            "systemTime" to systemTime.format(DateTimeFormatter.ISO_DATE_TIME),
+            "port" to port.toString(),
+            "hostname" to hostname
+        )
+    }
+
 }

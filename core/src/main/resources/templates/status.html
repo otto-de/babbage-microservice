@@ -4,17 +4,60 @@
 <body>
 <div th:replace="~{fragments/navigation  :: navigation}"></div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <dl>
-                <dt>Status:</dt>
-                <dd th:text="${applicationStatus}">Status</dd>
-                <dt>Commit:</dt>
-                <dd th:text="${applicationCommit}">Commit</dd>
-                <dt>Version:</dt>
-                <dd th:text="${applicationVersion}">Version</dd>
-            </dl>
+<div class="container-fluid status-container">
+
+    <div class="cards">
+        <div class="card" th:with="version=${statusData.application}">
+            <div class="card-body">
+                <h5 class="card-title">Version</h5>
+                <div class="card-text">
+                    <div>Version: <span th:text="${version.version}"></span></div>
+                    <div>Commit: <span th:text="${version.commit}"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" th:with="system=${statusData.system}">
+            <div class="card-body">
+                <h5 class="card-title">System</h5>
+                <div class="card-text">
+                    <div>Started at: <span th:text="${#temporals.format(system.startTime, 'dd-MM-yyyy HH:mm')}"></span>
+                    </div>
+                    <div>Up-Time: <span th:text="${system.upTime}"></span></div>
+                    <div>System-Time: <span
+                            th:text="${#temporals.format(system.systemTime, 'dd-MM-yyyy HH:mm')}"></span></div>
+                    <div>Port: <span th:text="${system.port}"></span></div>
+                    <div>Hostname: <span th:text="${system.hostname}"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-details">
+        <h5>Status:
+            <div style="display: inline-block"
+                 th:replace="~{ fragments/status-badge :: status_badge(status=${statusData.serviceStatus}) }"></div>
+        </h5>
+        <div th:each="statusGroup : ${statusData.indicators}" class="status-detail-group-container">
+            <h6 th:text="${statusGroup.key}"></h6>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col" class="status-column">Status</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Message</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="statusDetail : ${statusGroup.value}">
+                    <td>
+                        <div th:replace="~{ fragments/status-badge :: status_badge(status=${statusDetail.status}) }"></div>
+                    </td>
+                    <td th:text="${statusDetail.name}"></td>
+                    <td th:text="${statusDetail.message}"></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

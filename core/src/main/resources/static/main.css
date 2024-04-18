@@ -1,0 +1,27 @@
+.status-container {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 400px;
+}
+
+.status-details {
+    flex: 1;
+
+    .status-detail-group-container {
+        border-top: 1px solid #d2d2d2;
+        padding: 16px;
+
+        .status-column {
+            width: 100px;
+        }
+    }
+}

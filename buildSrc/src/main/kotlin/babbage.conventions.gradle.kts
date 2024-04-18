@@ -25,6 +25,7 @@ dependencies {
      * These do not have to be added again in the build.gradle.kts of the module.
      */
     implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.4.RELEASE")
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")

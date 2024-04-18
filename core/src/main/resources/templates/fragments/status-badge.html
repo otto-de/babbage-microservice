@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+<div th:fragment="status_badge(status)">
+    <div>
+        <span th:if="${status.isOk}" class="badge text-bg-success">OK</span>
+        <span th:if="${status.isWarning}" class="badge text-bg-warning">WARNING</span>
+        <span th:if="${status.isError}" class="badge text-bg-danger">ERROR</span>
+    </div>
+</div>
+</body>
+</html>
