@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head></head>
 <body>
-<div th:fragment="status_badge(status)">
+<div th:fragment="status_badge(status)" style="display: inline-block">
     <div>
         <span th:if="${status.isOk}" class="badge text-bg-success">OK</span>
         <span th:if="${status.isWarning}" class="badge text-bg-warning">WARNING</span>

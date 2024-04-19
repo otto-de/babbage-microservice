@@ -35,8 +35,7 @@
 
     <div class="status-details">
         <h5>Status:
-            <div style="display: inline-block"
-                 th:replace="~{ fragments/status-badge :: status_badge(status=${statusData.serviceStatus}) }"></div>
+            <div th:replace="~{ fragments/status-badge :: status_badge(status=${statusData.serviceStatus}) }"></div>
         </h5>
         <div th:each="statusGroup : ${statusData.indicators}" class="status-detail-group-container">
             <h6 th:text="${statusGroup.key}"></h6>
