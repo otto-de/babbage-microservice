@@ -1,7 +1,7 @@
 # Changelog
 
 
-## 0.2.1-SNAPSHOT
+## 0.3.0
 * _core_:
   * Upgrade to bootstrap 5.3.3
   * Add status detail indicator infos to status page
