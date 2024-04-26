@@ -2,6 +2,11 @@ info:
   app:
     name: babbage-example
 
+babbage:
+  status:
+    git:
+      enabled: true
+
 management:
   endpoints:
     web:

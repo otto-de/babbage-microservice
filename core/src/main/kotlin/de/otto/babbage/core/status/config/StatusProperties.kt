@@ -7,5 +7,9 @@ import org.springframework.context.annotation.Configuration
 @ConfigurationProperties(prefix = "babbage.status")
 class StatusProperties {
 
-    var useCommitAsVersion = false
+    var git: StatusGitProperties = StatusGitProperties()
 }
+
+data class StatusGitProperties(
+    var enabled: Boolean = false
+)

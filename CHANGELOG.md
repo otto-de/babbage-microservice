@@ -5,6 +5,7 @@
 * _core_:
   * Upgrade to bootstrap 5.3.3
   * Add status detail indicator infos to status page
+  * Enhance git infos on status page
 
 ## 0.2.0
 * Upgrade all modules to spring boot 3.2.2

@@ -1,16 +1,14 @@
 package de.otto.babbage.core.status
 
 import de.otto.babbage.core.management.ManagementController
-import de.otto.babbage.core.status.config.StatusProperties
 import de.otto.babbage.core.status.contributors.SystemInfoContributor
 import de.otto.babbage.core.status.indicators.Status
 import de.otto.babbage.core.status.indicators.Status.*
 import de.otto.babbage.core.status.indicators.StatusDetail
 import de.otto.babbage.core.status.indicators.StatusDetailIndicator
+import de.otto.babbage.core.status.version.GitVersionProvider
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.actuate.info.InfoEndpoint
-import org.springframework.boot.info.GitProperties
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -19,10 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
 class StatusController(
-    private val infoEndpoint: InfoEndpoint,
     @Autowired(required = false)
-    private val gitProperties: GitProperties?,
-    private val statusProperties: StatusProperties,
+    private val gitVersionProvider: GitVersionProvider? = null,
     @Value("\${info.app.name}") private val applicationName: String,
     private val statusDetailIndicators: List<StatusDetailIndicator>,
     private val systemInfoContributor: SystemInfoContributor
@@ -39,17 +35,13 @@ class StatusController(
     @GetMapping("\${management.endpoints.web.base-path}/status", produces = [MediaType.APPLICATION_JSON_VALUE])
     @ResponseBody
     suspend fun statusJson(): StatusData {
-        val commit = gitProperties?.commitId ?: "unavailable"
-        val version = if (statusProperties.useCommitAsVersion) commit else getVersion()
         val indicators = statusDetailIndicators.groupBy { it.getGroup() }
             .map { it.key to it.value.flatMap { indicator -> indicator.getDetails() } }
             .toMap()
         return StatusData(
             application = Application(
                 name = applicationName,
-                version = version,
-                status = ApplicationStatus.OK, // dummy status because HealthEndpoint is blocking and causing errors
-                commit = commit
+                version = gitVersionProvider?.getGitVersion()
             ),
             serviceStatus = getWorstStatus(indicators),
             indicators = indicators,
@@ -63,12 +55,6 @@ class StatusController(
             .worstStatus()
     }
 
-    @Suppress("UNCHECKED_CAST", "ReturnCount")
-    private fun getVersion(): String {
-        val gitInfos = infoEndpoint.info()["git"]?.let { it as Map<String, Any> } ?: return ""
-        val commitInfos = gitInfos["commit"]?.let { it as Map<String, Any> } ?: return ""
-        return commitInfos["time"]?.toString() ?: ""
-    }
 }
 
 private fun Set<Status>.worstStatus(): Status {

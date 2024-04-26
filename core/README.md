@@ -19,11 +19,15 @@ babbage-microservices because there too many ways of securing services in a micr
 
 #### Status ( /status ):
 
-_will be added soon_
+On the status page you will find a summary of all important information about your service. This includes general system
+information, if enabled the git information, and all infos from the registered `StatusDetailIndicator` beans.
 
-[comment]: <> (Git Info: git.properties are shown on status page)
+_Git section_:<br/>
+To be able to see the git information on the status page, you have to provide a `git.properties` in the resource
+section of your build folder and have to set `babbage.status.git.enabled=true` in your `application.properties/.yaml`. As shown in the example application you could just use
+the [gradle git properties plugin](https://github.com/n0mer/gradle-git-properties) to generate the file.
 
-[comment]: <> (Screenshot)
+![Status Page of Example Application](docs/status-page.png)
 
 #### Logger ( /logger ):
 
@@ -40,7 +44,8 @@ You could add a custom management page that uses the general management page lay
 
 1. Add Controller that implements the `ManagementController` interface. This will add the required model attributes to
    the template, that are required for the navigation.
-2. Create a new controller endpoint (path should be based on `management.endpoints.web.base-path` property) inside your added controller, and use the following html template:
+2. Create a new controller endpoint (path should be based on `management.endpoints.web.base-path` property) inside your
+   added controller, and use the following html template:
 
 ```
 <!DOCTYPE html>
@@ -58,7 +63,8 @@ You could add a custom management page that uses the general management page lay
 </html>
 ```
 
-3. Add a `NavBarItem` Bean to your application context to register your new endpoint to the navigation. The `path` is based on the `management.endpoints.web.base-path` property and should the one from
+3. Add a `NavBarItem` Bean to your application context to register your new endpoint to the navigation. The `path` is
+   based on the `management.endpoints.web.base-path` property and should the one from
 
 ```
 @Bean

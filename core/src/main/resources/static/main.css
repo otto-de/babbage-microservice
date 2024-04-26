@@ -11,6 +11,16 @@
     flex-direction: column;
     gap: 16px;
     max-width: 400px;
+
+    .card-text-item {
+        margin: 8px 0;
+
+        .card-text-item-title {
+            font-weight: bold;
+            color: #6c757d;
+        }
+    }
+
 }
 
 .status-details {

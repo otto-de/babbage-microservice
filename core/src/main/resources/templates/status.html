@@ -7,12 +7,35 @@
 <div class="container-fluid status-container">
 
     <div class="cards">
-        <div class="card" th:with="version=${statusData.application}">
+        <div class="card"
+             th:if="${statusData.application.version != null}"
+             th:with="version=${statusData.application.version}">
             <div class="card-body">
                 <h5 class="card-title">Version</h5>
                 <div class="card-text">
-                    <div>Version: <span th:text="${version.version}"></span></div>
-                    <div>Commit: <span th:text="${version.commit}"></span></div>
+                    <div class="card-text-item">
+                        <div class="card-text-item-title">Branch</div>
+                        <div th:text="${version.branch}"></div>
+                    </div>
+                    <div class="card-text-item">
+                        <div class="card-text-item-title">Commit Id</div>
+                        <div th:text="${version.commitId}"></div>
+                    </div>
+                    <div class="card-text-item">
+                        <div class="card-text-item-title">Time</div>
+                        <div th:text="${#dates.format(version.time, 'dd-MM-yyyy HH:mm:ss')}"></div>
+                    </div>
+                    <div class="card-text-item">
+                        <div class="card-text-item-title">Author</div>
+                        <div th:text="${version.user}"></div>
+                    </div>
+                    <div class="card-text-item">
+                        <div class="card-text-item-title">Message</div>
+                        <div th:text="${version.message}"></div>
+                    </div>
+                    <div class="card-text-item">
+                        <a class="btn btn-info" th:href="${version.repositoryUrl}">Go to Git-Repository</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -21,13 +44,26 @@
             <div class="card-body">
                 <h5 class="card-title">System</h5>
                 <div class="card-text">
-                    <div>Started at: <span th:text="${#temporals.format(system.startTime, 'dd-MM-yyyy HH:mm')}"></span>
+                    <div class="card-text-item">
+                        <div class="card-text-item-title">Started at</div>
+                        <div th:text="${#temporals.format(system.startTime, 'dd-MM-yyyy HH:mm')}"></div>
                     </div>
-                    <div>Up-Time: <span th:text="${system.upTime}"></span></div>
-                    <div>System-Time: <span
-                            th:text="${#temporals.format(system.systemTime, 'dd-MM-yyyy HH:mm')}"></span></div>
-                    <div>Port: <span th:text="${system.port}"></span></div>
-                    <div>Hostname: <span th:text="${system.hostname}"></span></div>
+                    <div class="card-text-item">
+                        <div class="card-text-item-title">Up-Time</div>
+                        <div th:text="${system.upTime}"></div>
+                    </div>
+                    <div class="card-text-item">
+                        <div class="card-text-item-title">System-Time</div>
+                        <div th:text="${#temporals.format(system.systemTime, 'dd-MM-yyyy HH:mm')}"></div>
+                    </div>
+                    <div class="card-text-item">
+                        <div class="card-text-item-title">Port</div>
+                        <div th:text="${system.port}"></div>
+                    </div>
+                    <div class="card-text-item">
+                        <div class="card-text-item-title">Hostname</div>
+                        <div th:text="${system.hostname}"></div>
+                    </div>
                 </div>
             </div>
         </div>
