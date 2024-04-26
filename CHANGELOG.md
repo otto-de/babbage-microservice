@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.1-SNAPSHOT
+## 0.3.1
 * _core_:
   * Fix: Just pass commit time from `git.properties` to status page, because the formats in the generated files are different.
 
