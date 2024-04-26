@@ -19,7 +19,7 @@ class GitVersionProviderTest {
         properties.setProperty("branch", branchName)
         val commitId = "someCommitId-${UUID.randomUUID()}"
         properties.setProperty("commit.id", commitId)
-        val commitTime = "1714137126540"
+        val commitTime = "someCommitTime-${UUID.randomUUID()}"
         properties.setProperty("commit.time", commitTime)
         val user = "someUser-${UUID.randomUUID()}"
         properties.setProperty("commit.user.name", user)
@@ -38,7 +38,7 @@ class GitVersionProviderTest {
         gitVersion shouldBe GitVersion(
             branch = branchName,
             commitId = commitId,
-            time = commitTime.toLong() * 1000,
+            time = commitTime,
             user = user,
             message = messageShort,
             repositoryUrl = remoteUrl
@@ -59,7 +59,7 @@ class GitVersionProviderTest {
         val properties = Properties()
         properties.setProperty("branch", "someBranch-${UUID.randomUUID()}")
         properties.setProperty("commit.id", "someCommitId-${UUID.randomUUID()}")
-        properties.setProperty("commit.time", "123456789")
+        properties.setProperty("commit.time", "someCommitTime-${UUID.randomUUID()}")
         properties.setProperty("commit.user.name", "someUser-${UUID.randomUUID()}")
         properties.setProperty("commit.message.short", "someMessageShort-${UUID.randomUUID()}")
         properties.setProperty("remote.origin.url", gitRemoteUrl)

@@ -19,7 +19,7 @@ class GitVersionProvider(
         return GitVersion(
             branch = gitProperties.branch ?: return handleNull("branch"),
             commitId = gitProperties.get("commit.id") ?: return handleNull("commit.id"),
-            time = gitProperties.get("commit.time")?.toLong() ?: return handleNull("commit.time"),
+            time = gitProperties.get("commit.time") ?: return handleNull("commit.time"),
             user = gitProperties.get("commit.user.name") ?: return handleNull("commit.user.name"),
             message = gitProperties.get("commit.message.short") ?: return handleNull("commit.message.short"),
             repositoryUrl = parseRemoteUrlToHttps() ?: return handleNull("remote.origin.url")
