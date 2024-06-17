@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "de.otto.babbage"
-version = "0.4.0"
+version = "0.4.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
@@ -67,6 +67,7 @@ tasks.withType<KotlinCompile> {
 
 detekt {
     baseline = file("../detekt-baseline.xml")
+    config.from(files("../detekt-config.yml"))
     config.from(files("../detekt-config.yml"))
     buildUponDefaultConfig = true
 }
