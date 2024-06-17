@@ -9,6 +9,10 @@ style:
       - 'STOPSHIP:'
   WildcardImport:
     active: false
+  MaxLineLength:
+    active: false
+  NewLineAtEndOfFile:
+    active: false
 
 potential-bugs:
   ImplicitDefaultLocale:

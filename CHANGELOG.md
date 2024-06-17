@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.0
+* _core_:
+  * add metrics configuration so that histogram (bucket) is enabled for http.client metrics from webclient (http_client_requests_seconds_bucket).
+
+
 ## 0.3.1
 * _core_:
   * Fix: Just pass commit time from `git.properties` to status page, because the formats in the generated files are different.
