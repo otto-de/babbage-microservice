@@ -1,4 +1,4 @@
-package de.otto.babbage.core.config
+package de.otto.babbage.core.metrics
 
 import io.kotest.matchers.collections.shouldContain
 import io.micrometer.common.KeyValue

@@ -1,4 +1,4 @@
-package de.otto.babbage.core.config
+package de.otto.babbage.core.metrics
 
 import io.micrometer.common.KeyValue
 import io.micrometer.common.KeyValues

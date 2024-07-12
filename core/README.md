@@ -24,7 +24,8 @@ information, if enabled the git information, and all infos from the registered `
 
 _Git section_:<br/>
 To be able to see the git information on the status page, you have to provide a `git.properties` in the resource
-section of your build folder and have to set `babbage.status.git.enabled=true` in your `application.properties/.yaml`. As shown in the example application you could just use
+section of your build folder and have to set `babbage.status.git.enabled=true` in your `application.properties/.yaml`.
+As shown in the example application you could just use
 the [gradle git properties plugin](https://github.com/n0mer/gradle-git-properties) to generate the file.
 
 ![Status Page of Example Application](docs/status-page.png)
@@ -103,7 +104,8 @@ _will be added soon_
 
 ### Custom properties
 
-| property                               | default | description                                        |
-|----------------------------------------|---------|----------------------------------------------------|
-| babbage.metrics.startup-metric.enabled | false   | If enabled, a metric for startup duration is added |
-| babbage.status.useCommitAsVersion      | false   | _tbd_                                              |
+| property                                          | default | description                                                                                                                                                        |
+|---------------------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| babbage.metrics.startup-metric.enabled            | false   | If enabled, a metric for startup duration is added                                                                                                                 |
+| babbage.metrics.custom-html-client-metric.enabled | false   | If enabled, the default http client metrics will be aggregated by the first request path to limit the amount of metrics with a lot of different request parameters |
+| babbage.status.useCommitAsVersion                 | false   | _tbd_                                                                                                                                                              |
