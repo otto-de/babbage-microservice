@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.5.0-SNAPSHOT
+## 0.5.0
 
 * _core_:
     * remove metrics configuration for http client metrics which was introduced in 0.4.0 because it could be configured
