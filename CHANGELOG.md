@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1
+* _core_:
+    * Fix: Execute status detail indicators in a IO Dispatcher because they can be blocking.
+
 ## 0.5.0
 
 * _core_:
