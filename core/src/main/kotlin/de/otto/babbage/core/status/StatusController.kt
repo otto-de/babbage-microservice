@@ -7,6 +7,8 @@ import de.otto.babbage.core.status.indicators.Status.*
 import de.otto.babbage.core.status.indicators.StatusDetail
 import de.otto.babbage.core.status.indicators.StatusDetailIndicator
 import de.otto.babbage.core.status.version.GitVersionProvider
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.MediaType
@@ -36,7 +38,7 @@ class StatusController(
     @ResponseBody
     suspend fun statusJson(): StatusData {
         val indicators = statusDetailIndicators.groupBy { it.getGroup() }
-            .map { it.key to it.value.flatMap { indicator -> indicator.getDetails() } }
+            .map { it.key to it.value.flatMap { indicator -> withContext(Dispatchers.IO) { indicator.getDetails() } } }
             .toMap()
         return StatusData(
             application = Application(
