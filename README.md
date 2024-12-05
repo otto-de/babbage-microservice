@@ -1,5 +1,6 @@
 # Babbage Microservice
 [![Build](https://github.com/otto-de/babbage-microservice/actions/workflows/build.yml/badge.svg)](https://github.com/otto-de/babbage-microservice/actions/workflows/build.yml)
+![OSS Lifecycle](https://img.shields.io/osslifecycle?file_url=https%3A%2F%2Fraw.githubusercontent.com%2Fotto-de%2Fbabbage-microservice%2Fmain%2FOSSMETADATA)
 
 [Babbage](https://de.wikipedia.org/wiki/Charles_Babbage) originated the concept of a digital programmable computer.
 
