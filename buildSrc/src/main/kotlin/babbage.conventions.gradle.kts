@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("maven-publish")
@@ -12,8 +12,8 @@ plugins {
 }
 
 group = "de.otto.babbage"
-version = "0.5.1"
-java.sourceCompatibility = JavaVersion.VERSION_17
+version = "0.5.2-SNAPSHOT"
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 repositories {
     mavenCentral()
@@ -29,39 +29,42 @@ dependencies {
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.6.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4")
+    val coroutinesVersion = "1.6.4"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutinesVersion")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
-    testImplementation("io.kotest:kotest-runner-junit5:5.5.5")
-    testImplementation("io.kotest:kotest-assertions-core:5.5.5")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.11.4")
+    val koTestVersion = "5.9.1"
+    testImplementation("io.kotest:kotest-runner-junit5:$koTestVersion")
+    testImplementation("io.kotest:kotest-assertions-core:$koTestVersion")
 
-    testImplementation("io.mockk:mockk:1.13.4")
-    testImplementation("io.mockk:mockk-jvm:1.13.4")
+    val mockkVersion = "1.13.16"
+    testImplementation("io.mockk:mockk:$mockkVersion")
+    testImplementation("io.mockk:mockk-jvm:$mockkVersion")
 
     /**
      * Specify versions here for dependencies that are not used by every module.
      * The dependency have to be configured in the module build.gradle.kts without a version.
      */
     constraints {
-        api("software.amazon.awssdk:auth:2.20.7")
-        api("software.amazon.awssdk:s3:2.20.7")
-        api("software.amazon.awssdk:ssm:2.20.7")
+        val awsSdkVersion = "2.30.2"
+        api("software.amazon.awssdk:auth:$awsSdkVersion")
+        api("software.amazon.awssdk:s3:$awsSdkVersion")
+        api("software.amazon.awssdk:ssm:$awsSdkVersion")
 
         // test dependencies
-        api("com.ninja-squad:springmockk:4.0.0")
-        api("org.jsoup:jsoup:1.15.3")
-        api("io.kotest.extensions:kotest-assertions-jsoup:1.0.0")
+        api("com.ninja-squad:springmockk:4.0.2")
+        api("org.jsoup:jsoup:1.18.3")
     }
 
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "17"
-        allWarningsAsErrors = true
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_21)
+        allWarningsAsErrors.set(true)
     }
 }
 
@@ -111,27 +114,6 @@ publishing {
                 artifact(tasks["sourcesJar"])
             }
         }
-    }
-}
-
-/**
- * The generated MavenPom has two `dependencyManagement` sections, which is invalid. There is a workaround to fix this
- * issue:
- * https://github.com/spring-gradle-plugins/dependency-management-plugin/issues/257#issuecomment-895790557
- */
-tasks.withType<GenerateMavenPom>().all {
-    doLast {
-        val file = File("$buildDir/publications/${base.archivesName.get()}/pom-default.xml")
-        var text = file.readText()
-        val regex =
-            "(?s)(<dependencyManagement>.+?<dependencies>)(.+?)(</dependencies>.+?</dependencyManagement>)".toRegex()
-        val matcher = regex.find(text)
-        if (matcher != null) {
-            text = regex.replaceFirst(text, "")
-            val firstDeps = matcher.groups[2]!!.value
-            text = regex.replaceFirst(text, "$1$2$firstDeps$3")
-        }
-        file.writeText(text)
     }
 }
 

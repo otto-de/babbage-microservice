@@ -65,14 +65,13 @@ class ParamStorePropertySourcePostProcessor(
 
     override fun setEnvironment(environment: Environment) {
         val pathProperty = "babbage.aws.paramstore.path"
-        val path = Objects.requireNonNull(
-            environment.getProperty(pathProperty),
+        val path = requireNotNull(environment.getProperty(pathProperty)) {
             "Property '$pathProperty' must not be null"
-        )
+        }
         properties = ParamStoreProperties()
         properties.isAddWithLowestPrecedence =
             environment.getProperty("babbage.aws.paramstore.addWithLowestPrecedence", "false").toBooleanStrict()
-        properties.path = path!!
+        properties.path = path
     }
 
     companion object {

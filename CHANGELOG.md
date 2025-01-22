@@ -1,5 +1,11 @@
 # Changelog
 
+## Next Snapshot
+* dependency updates:
+  * Upgrade to java 21 
+  * Upgrade to spring 3.4.x
+  * Upgrade to kotlin 2.0.x
+
 ## 0.5.1
 * _core_:
     * Fix: Execute status detail indicators in a IO Dispatcher because they can be blocking.
