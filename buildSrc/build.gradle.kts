@@ -13,5 +13,5 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-gradle-plugin:3.4.3")      // id("org.springframework.boot")
     implementation("io.spring.gradle:dependency-management-plugin:1.1.7")           // id("io.spring.dependency-management")
     implementation("com.adarshr:gradle-test-logger-plugin:4.0.0")                   // id("com.adarshr.test-logger")
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.23.7")       // id("io.gitlab.arturbosch.detekt")
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.23.8")       // id("io.gitlab.arturbosch.detekt")
 }
