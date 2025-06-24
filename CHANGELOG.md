@@ -1,10 +1,10 @@
 # Changelog
 
-## Next Snapshot
-* dependency updates:
-  * Upgrade to java 21 
-  * Upgrade to spring 3.4.x
-  * Upgrade to kotlin 2.0.x
+## 0.6.0
+* Upgrade to java 21
+* Upgrade to spring 3.5.3
+* Upgrade to kotlin 2.0.21
+* Some dependency versions where missing from the published pom file, leading to errors from cyclonedxBom plugin. This is now fixed.
 
 ## 0.5.1
 * _core_:

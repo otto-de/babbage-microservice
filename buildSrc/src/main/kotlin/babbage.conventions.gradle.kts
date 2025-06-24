@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "de.otto.babbage"
-version = "0.5.2-SNAPSHOT"
+version = "0.6.0"
 java.sourceCompatibility = JavaVersion.VERSION_21
 
 repositories {
