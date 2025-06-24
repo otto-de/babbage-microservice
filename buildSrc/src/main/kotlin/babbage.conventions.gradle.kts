@@ -46,7 +46,7 @@ dependencies {
 
     /**
      * Specify versions here for dependencies that are not used by every module.
-     * The dependency have to be configured in the module build.gradle.kts without a version.
+     * The dependency has to be configured in the module build.gradle.kts without a version.
      */
     constraints {
         val awsSdkVersion = "2.30.2"
@@ -112,6 +112,11 @@ publishing {
             create<MavenPublication>(base.archivesName.get()) {
                 from(components["java"])
                 artifact(tasks["sourcesJar"])
+                versionMapping {
+                    allVariants {
+                        fromResolutionResult()
+                    }
+                }
             }
         }
     }
