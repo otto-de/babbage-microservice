@@ -2,6 +2,9 @@
 [![Build](https://github.com/otto-de/babbage-microservice/actions/workflows/build.yml/badge.svg)](https://github.com/otto-de/babbage-microservice/actions/workflows/build.yml)
 ![OSS Lifecycle](https://img.shields.io/osslifecycle?file_url=https%3A%2F%2Fraw.githubusercontent.com%2Fotto-de%2Fbabbage-microservice%2Fmain%2FOSSMETADATA)
 
+> **⚠️ This project is no longer actively developed.**
+> With the introduction of **Java Virtual Threads** (Project Loom), the maintaining team has decided to move back to **Spring MVC** instead of continuing with the reactive stack. As a result, our existing **[edison-microservice](https://github.com/otto-de/edison-microservice)** will be used going forward. This repository will no longer receive new features or regular maintenance.
+
 [Babbage](https://de.wikipedia.org/wiki/Charles_Babbage) originated the concept of a digital programmable computer.
 
 ## About
